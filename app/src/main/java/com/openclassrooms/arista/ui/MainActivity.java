@@ -25,17 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String SELECTED_MENU_ITEM = "selected_menu_item";
 
-    private ActivityMainBinding binding;
     private int selectedMenuItemId = R.id.nav_user_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.bottomNavigation.setOnNavigationItemSelectedListener(navListener);
+        binding.bottomNavigation.setOnItemSelectedListener(navListener);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserDataFragment()).commit();
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt(SELECTED_MENU_ITEM, selectedMenuItemId);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = item -> {
+    private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
         Fragment selectedFragment = null;
         selectedMenuItemId = item.getItemId();
 

@@ -2,7 +2,7 @@ package com.openclassrooms.arista.domain.model;
 
 public enum ExerciseCategory {
     Running,
-    Natation,
+    Swimming,
     Football,
     Walking,
     Riding

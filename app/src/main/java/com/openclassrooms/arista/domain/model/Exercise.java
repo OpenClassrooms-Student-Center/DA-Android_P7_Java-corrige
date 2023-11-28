@@ -3,9 +3,11 @@ package com.openclassrooms.arista.domain.model;
 
 import com.openclassrooms.arista.data.entity.ExerciseDto;
 
-import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.ZoneOffset;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Objects;
 
 public class Exercise {
@@ -87,4 +89,16 @@ public class Exercise {
         );
     }
 
+    public static Exercise fromDto(ExerciseDto exerciseDto) {
+        return new Exercise(
+                exerciseDto.getId(),
+                LocalDateTime.ofInstant(
+                        Instant.ofEpochMilli(exerciseDto.getStartTime()),
+                        ZoneId.systemDefault()
+                ),
+                exerciseDto.getDuration(),
+                ExerciseCategory.valueOf(exerciseDto.getCategory()),
+                exerciseDto.getIntensity()
+        );
+    }
 }

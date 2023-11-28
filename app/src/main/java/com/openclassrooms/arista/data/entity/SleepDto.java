@@ -1,23 +1,28 @@
 package com.openclassrooms.arista.data.entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.openclassrooms.arista.domain.model.Sleep;
 
-import org.threeten.bp.Instant;
-import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.ZoneId;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 
 @Entity(tableName = "sleep")
 public class SleepDto {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private long id;
 
+    @ColumnInfo(name = "start_time")
     private long startTime;
+    @ColumnInfo(name = "duration")
     private int duration;
+    @ColumnInfo(name = "quality")
     private int quality;
 
     public SleepDto(long startTime, int duration, int quality) {
@@ -58,11 +63,4 @@ public class SleepDto {
         this.quality = quality;
     }
 
-    public Sleep toSleep() {
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(
-                Instant.ofEpochMilli(startTime),
-                ZoneId.systemDefault()
-        );
-        return new Sleep(localDateTime, duration, quality);
-    }
 }

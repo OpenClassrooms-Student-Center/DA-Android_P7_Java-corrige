@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 
 import com.openclassrooms.arista.data.dao.ExerciseDtoDao;
-import com.openclassrooms.arista.data.entity.ExerciseDto;
-import com.openclassrooms.arista.data.entity.SleepDto;
 import com.openclassrooms.arista.domain.model.Exercise;
 
 import java.util.List;
@@ -23,7 +21,7 @@ public class ExerciseRepository {
 
     // Get all exercises
     public LiveData<List<Exercise>> getAllExercises() {
-        return Transformations.map(exerciseDao.getAllExercises(), exercisesDtos -> exercisesDtos.stream().map(ExerciseDto::toExercise).collect(Collectors.toList()));
+        return Transformations.map(exerciseDao.getAllExercises(), exercisesDtos -> exercisesDtos.stream().map(Exercise::fromDto).collect(Collectors.toList()));
     }
 
 

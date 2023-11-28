@@ -1,23 +1,33 @@
 package com.openclassrooms.arista.data.entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.openclassrooms.arista.domain.model.Exercise;
 import com.openclassrooms.arista.domain.model.ExerciseCategory;
 
-import org.threeten.bp.Instant;
-import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.ZoneId;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity(tableName = "exercise")
 public class ExerciseDto {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private long id;
+
+    @ColumnInfo(name = "start_time")
     private long startTime;
+
+    @ColumnInfo(name = "duration")
     private int duration;
+
+    @ColumnInfo(name = "category")
     private String category;
+
+    @ColumnInfo(name = "intensity")
     private int intensity;
 
     public ExerciseDto(long id, long startTime, int duration, String category, int intensity) {
@@ -26,16 +36,6 @@ public class ExerciseDto {
         this.duration = duration;
         this.category = category;
         this.intensity = intensity;
-    }
-
-    public Exercise toExercise() {
-        return new Exercise(
-                id,
-                LocalDateTime.ofInstant(Instant.ofEpochMilli(startTime), ZoneId.systemDefault()),
-                duration,
-                ExerciseCategory.valueOf(category),
-                intensity
-        );
     }
 
     // Getters and setters

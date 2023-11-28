@@ -1,7 +1,11 @@
 package com.openclassrooms.arista.domain.model;
 
 
-import org.threeten.bp.LocalDateTime;
+import com.openclassrooms.arista.data.entity.SleepDto;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class Sleep {
     private LocalDateTime startTime;
@@ -37,4 +41,15 @@ public class Sleep {
     public void setQuality(int quality) {
         this.quality = quality;
     }
+    public static Sleep fromDto(SleepDto sleepDto) {
+        return new Sleep(
+                LocalDateTime.ofInstant(
+                        Instant.ofEpochMilli(sleepDto.getStartTime()),
+                        ZoneId.systemDefault()
+                ),
+                sleepDto.getDuration(),
+                sleepDto.getQuality()
+        );
+    }
+
 }

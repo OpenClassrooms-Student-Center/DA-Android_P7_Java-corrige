@@ -22,7 +22,7 @@ import com.openclassrooms.arista.databinding.FragmentExerciseBinding;
 import com.openclassrooms.arista.domain.model.Exercise;
 import com.openclassrooms.arista.domain.model.ExerciseCategory;
 
-import org.threeten.bp.LocalDateTime;
+import java.time.LocalDateTime;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

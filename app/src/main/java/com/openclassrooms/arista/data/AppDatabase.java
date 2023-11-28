@@ -2,6 +2,7 @@ package com.openclassrooms.arista.data;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -29,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static class AppDatabaseCallback extends RoomDatabase.Callback {
         @Override
-        public void onCreate(SupportSQLiteDatabase db) {
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             databaseWriteExecutor.execute(() -> {
                 SleepDtoDao sleepDao = INSTANCE.sleepDtoDao();
@@ -39,7 +40,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 // Example:
                 sleepDao.insertSleep(new SleepDto(System.currentTimeMillis(), 480, 4));
                 sleepDao.insertSleep(new SleepDto(System.currentTimeMillis() - 1000 * 60 * 60 * 24, 450, 3));
-                userDtoDao.insertUser(new UserDto(1,"virgile","lol@xd.com", "testtest"));
+                userDtoDao.insertUser(new UserDto(1,"Louis","louis@wanadoo.fr"));
             });
         }
     }

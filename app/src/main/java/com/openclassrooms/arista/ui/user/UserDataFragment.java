@@ -30,13 +30,18 @@ public class UserDataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(UserDataViewModel.class);
+        initViewModel();
 
         viewModel.getUserLiveData().observe(getViewLifecycleOwner(), user -> {
-            binding.etName.setText(user.getName());
-            binding.etEmail.setText(user.getEmail());
-            binding.etPassword.setText(user.getPassword());
+            if (user != null) {
+                binding.etName.setText(user.getName());
+                binding.etEmail.setText(user.getEmail());
+            }
         });
+    }
+
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(UserDataViewModel.class);
     }
 
     @Override

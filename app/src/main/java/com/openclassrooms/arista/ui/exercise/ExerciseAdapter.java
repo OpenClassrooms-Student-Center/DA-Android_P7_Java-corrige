@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.openclassrooms.arista.R;
 import com.openclassrooms.arista.domain.model.Exercise;
 
-import org.threeten.bp.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatter;
 
 import java.util.List;
 
 public class ExerciseAdapter extends ListAdapter<Exercise, ExerciseAdapter.ExerciseViewHolder> {
 
-    private DeleteExerciseInterface context;
+    private final DeleteExerciseInterface context;
 
     public ExerciseAdapter(DeleteExerciseInterface context) {
         super(DIFF_CALLBACK);
@@ -57,7 +57,7 @@ public class ExerciseAdapter extends ListAdapter<Exercise, ExerciseAdapter.Exerc
         holder.ivDelete.setOnClickListener(view -> context.deleteExercise(exercise));
     }
 
-    public class ExerciseViewHolder extends RecyclerView.ViewHolder {
+    public static class ExerciseViewHolder extends RecyclerView.ViewHolder {
         TextView tvStartTime, tvDuration, tvCategory, tvIntensity;
         ImageView ivDelete;
 

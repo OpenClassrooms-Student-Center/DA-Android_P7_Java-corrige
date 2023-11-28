@@ -22,7 +22,7 @@ import org.junit.runners.JUnit4;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.threeten.bp.LocalDateTime;
+import java.time.LocalDateTime;
 
 import java.util.Arrays;
 import java.util.Collections;

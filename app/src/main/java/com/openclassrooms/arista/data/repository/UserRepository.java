@@ -18,7 +18,7 @@ public class UserRepository {
         // Convertir UserDto en User à l'aide de Transformations.map
         return Transformations.map(userDtoDao.getUserById(1), userDto -> {
             if (userDto != null) {
-                return userDto.toUser();
+                return User.fromDto(userDto);
             } else {
                 return null;
             }
@@ -26,7 +26,7 @@ public class UserRepository {
     }
 
 
-    public void setUser(User user) throws Exception {
+    public void setUser(User user) {
         UserDto userDto = user.toDto();
         userDtoDao.updateUser(userDto);
     }

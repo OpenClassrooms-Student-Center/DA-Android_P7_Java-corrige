@@ -30,6 +30,9 @@ android {
         }
     }
     compileOptions {
+        // Flag to enable support for the new language APIs
+        isCoreLibraryDesugaringEnabled = true
+
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -50,15 +53,18 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.dagger:hilt-android:2.44")
-    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
 
     kapt("com.google.dagger:hilt-compiler:2.44")
+
+    // SQLCipher
+    implementation("net.zetetic:android-database-sqlcipher:4.5.0")
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
-    testImplementation ("org.threeten:threetenbp:1.3.1")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
 
 }
