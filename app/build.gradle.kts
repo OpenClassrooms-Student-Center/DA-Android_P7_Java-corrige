@@ -56,9 +56,6 @@ dependencies {
 
     kapt("com.google.dagger:hilt-compiler:2.44")
 
-    // SQLCipher
-    implementation("net.zetetic:android-database-sqlcipher:4.5.0")
-
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
     testImplementation("junit:junit:4.13.2")
