@@ -25,7 +25,6 @@ import dagger.hilt.components.SingletonComponent;
 @InstallIn(SingletonComponent.class)
 public class AppModule {
 
-
     @Provides
     @Singleton
     public AppDatabase provideAppDatabase(@ApplicationContext Context context) {
@@ -33,43 +32,36 @@ public class AppModule {
         return AppDatabase.getDatabase(context);
     }
 
-
     @Provides
     public UserDtoDao provideUserDao(AppDatabase appDatabase) {
         return appDatabase.userDtoDao();
     }
-
 
     @Provides
     public SleepDtoDao provideSleepDao(AppDatabase appDatabase) {
         return appDatabase.sleepDtoDao();
     }
 
-
     @Provides
     public ExerciseDtoDao provideExerciseDao(AppDatabase appDatabase) {
         return appDatabase.exerciseDtoDao();
     }
-
 
     @Provides
     @Singleton
     public UserRepository provideUserRepository(UserDtoDao userDao) {
         return new UserRepository(userDao);
     }
-
     @Provides
     @Singleton
     public ExecutorService provideExecutorService() {
         return Executors.newFixedThreadPool(4);
     }
-
     @Provides
     @Singleton
     public SleepRepository provideSleepRepository(SleepDtoDao sleepDtoDao) {
         return new SleepRepository(sleepDtoDao);
     }
-
 
     @Provides
     @Singleton

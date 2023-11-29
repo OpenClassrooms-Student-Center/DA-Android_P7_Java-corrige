@@ -4,13 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.openclassrooms.arista.domain.model.Exercise;
-import com.openclassrooms.arista.domain.model.ExerciseCategory;
-
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
 @Entity(tableName = "exercise")
 public class ExerciseDto {
 

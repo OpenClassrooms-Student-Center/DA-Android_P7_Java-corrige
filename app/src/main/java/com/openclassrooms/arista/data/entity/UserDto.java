@@ -5,8 +5,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.openclassrooms.arista.domain.model.User;
-
 @Entity(tableName = "users")
 public class UserDto {
     @PrimaryKey(autoGenerate = true)

@@ -4,12 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.openclassrooms.arista.domain.model.Sleep;
-
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
 
 @Entity(tableName = "sleep")
 public class SleepDto {

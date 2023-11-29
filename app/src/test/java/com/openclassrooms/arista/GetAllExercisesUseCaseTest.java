@@ -45,8 +45,6 @@ public class GetAllExercisesUseCaseTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        // Initialize the ThreeTenBP library if required
-        // ZoneRulesProvider.getAvailableZoneIds();
         getAllExercisesUseCase = new GetAllExercisesUseCase(exerciseRepository);
     }
 
